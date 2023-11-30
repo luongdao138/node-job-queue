@@ -17,6 +17,9 @@
 - used to add a job to queue or buffer job
 - use a job queue strategy and jog buffer service to start and process jobs
 
+- how to init a queue and start a queue
+  - to init a queue, use jobQueueService.createQueue() function or using `queues` in worker config options
+
 ## Job Buffer Service
 
 - used to manage buffer: add, remove, flush
