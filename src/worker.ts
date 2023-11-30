@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
 import { JobQueueService } from './services';
-import { WorkerConfig } from './types';
+import { RuntimeWorkerConfig, WorkerConfig } from './types';
 import { DefaultLogger } from './utils/default-logger';
 
 const defaultConfig = {
@@ -9,11 +9,11 @@ const defaultConfig = {
 
 export class JobQueueWorker {
   private _jobQueueService: JobQueueService;
-  private _config: Required<WorkerConfig>;
+  private _config: RuntimeWorkerConfig;
 
   constructor(config: WorkerConfig = defaultConfig) {
-    this._jobQueueService = new JobQueueService();
     this._config = merge(defaultConfig, config);
+    this._jobQueueService = new JobQueueService(this._config);
   }
 
   /**
